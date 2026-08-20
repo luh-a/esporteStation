@@ -38,6 +38,8 @@ export class AtletaComponent {
     pessoaAtleta.cep = this.cep
     pessoaAtleta.bairro = this.bairro
     pessoaAtleta.cidade = this.cidade
+    pessoaAtleta.estado = this.estado
+    pessoaAtleta.uf = this.uf
 
   }
 
