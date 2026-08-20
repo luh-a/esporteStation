@@ -1,0 +1,22 @@
+<div id="div-form">
+  <h2>Cadastrar Corrida</h2>
+  <form id="form-corrida" (submit)="salvarCorrida()">
+    <label for="descricao"> Descrição da corrida: </label>
+    <input type="text" id="descricao" [(ngModel)]="descricao" name="descricao" required>
+
+    <label for="data"> Data: </label>
+    <input type="date" id="data" [(ngModel)]="data" name="data" required>
+
+    <label for="distancia"> Distâncias (km): </label>
+    <input type="radio" id="5km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="5" required> 5 km
+    <input type="radio" id="10km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="10" required> 10 km
+    <input type="radio" id="21km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="21" required> 25 km
+
+    <div id="btns">
+      <button type="submit"> Cadastrar </button>
+      <button type="reset"> Limpar </button>
+    </div>
+
+  </form>
+
+</div>
