@@ -1,5 +1,40 @@
 <div id="listaCorrida">
-  <h3> Corridas Cadastradas </h3>
+  <h1> Corridas Cadastradas </h1>
 
-  
+  <!-- se corrida = 0 .... -->
+  @if(corridas().lenght === 0) {
+    <p> Nenhuma corrida cadastrada! </p>
+  } @else {
+    <div class="lista-corrida">
+      <table>
+        <thead>
+          <tr>
+            <th> Descrição </th>
+            <th> Data </th>
+            <th> Distância </th>
+            <th> Ações </th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          @for(corrida of corridas(); track corrida.idCorrida) {
+            <tr>
+              <td> {{corrida.descricao}} </td>
+              <td> {{corrida.data | date: 'dd/MM/yyyy'}} </td>
+              <td> {{corrida.distancia}} </td>
+
+              <td>
+                <div class="acoes">
+                  <button type="button" class="btnEditar" (click)=" editarCorrida(corrida.idCorrida)"> Editar </button>
+                  <button type="button" calss="btnRemover" (click)=" apagarCorrida(corrida.idCorrida)"> Apagar </button>
+
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 </div>
