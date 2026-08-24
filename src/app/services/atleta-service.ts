@@ -33,17 +33,4 @@ export class AtletaService {
     const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta/${pessoa.idPessoa}`
     return this.http.delete<Pessoa>(apiUrl)
   }
-
-  /*remover2(pessoa : Pessoa){
-    //cria um novo array sem o item determinado(filter)
-    this.atletas = this.atletas.filter(elem => elem. !== pessoa.id)
-  }
-
-  alterar(pessoa : Pessoa){
-    let posArray = this.localizarAtleta(pessoa.id)
-
-    if(posArray >=0){
-      this.atletas[posArray] = pessoa
-    }
-  }*/
 }

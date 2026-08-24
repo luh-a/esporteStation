@@ -2,8 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CorridaService } from '../../services/corrida-service';
 import { Corrida } from '../../models/corridaModel'
-import { ActivatedRoute, Route } from '@angular/router';
-import { Router } from 'express';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-corrida-component',
@@ -28,7 +27,7 @@ constructor(
   ){}
 
 ngOnInit(): void {
-    
+
 }
 
 //declaração de funções

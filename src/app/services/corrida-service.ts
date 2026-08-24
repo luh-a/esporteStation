@@ -41,25 +41,3 @@ export class CorridaService {
     return this.http.put<Corrida>(`${this.apiUrl}/${idCorrida}`, corrida);
   }
 }
-
-  /* private localizarCorrida(idCorrida: number){
-    return this.corridas.findIndex(elem => elem.id === idCorrida)
-  }
-
-  remover(posicaoArray : number){
-    //exclui no próprio array (splice)
-    this.corridas.splice(1,posicaoArray)
-  }
-
-  remover2(corrida : Corrida){
-    //cria um novo array sem o item determinado(filter)
-    this.corridas = this.corridas.filter(elem => elem.id !== corrida.id)
-  }
-
-  alterar(corrida : Corrida){
-    let posArray = this.localizarCorrida(corrida.id)
-
-    if(posArray >=0){
-      this.corridas[posArray] = corrida
-    }
-  }*/
