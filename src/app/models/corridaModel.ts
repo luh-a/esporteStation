@@ -1,6 +1,6 @@
 export class Corrida {
-  id: number = 0
+  idCorrida: number = 0
   descricao: string = ''
-  data: string = ''
+  data: Date | null = null
   distancia: string = ''
 }

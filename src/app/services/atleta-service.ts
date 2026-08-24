@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Pessoa } from '../models/atletaModel';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AtletaService {
-  private atletas : Pessoa[] = []
+  constructor (private http: HttpClient){ }
 
-  adicionar (pessoa: Pessoa){
-    //armengue para gerar o id
-    pessoa.id = this.atletas.length + 1
-
-    this.atletas.push(pessoa)
+  adicionar (pessoa: Pessoa): Observable<Pessoa> {
+    const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta`
+    return this.http.post<Pessoa>(apiUrl, pessoa)
   }
 
-  listar(){
-    console.table(this.atletas)
-    return this.atletas
+  ApiList(): Observable<Pessoa[]> {
+    const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta`
+    return this.http.get<Pessoa[]>(apiUrl)
   }
 
-  private localizarAtleta(idAtleta: number){
-    return this.atletas.findIndex(elem => elem.id === idAtleta)
+  listar(idPessoa: number): Observable<Pessoa> {
+    const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta/${idPessoa}`
+    return this.http.get<Pessoa>(apiUrl)
   }
 
-  remover(posicaoArray : number){
-    //exclui no próprio array (splice)
-    this.atletas.splice(1,posicaoArray)
+  alterar(pessoa : Pessoa): Observable<Pessoa> {
+    const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta/${pessoa.idPessoa}`
+    return this.http.put<Pessoa>(apiUrl, pessoa)
   }
 
-  remover2(pessoa : Pessoa){
+  remover(pessoa : Pessoa): Observable<Pessoa>{
+    const apiUrl = `https://6a88d25f7b483fa21fe93e0c.mockapi.io/Atleta/${pessoa.idPessoa}`
+    return this.http.delete<Pessoa>(apiUrl)
+  }
+
+  /*remover2(pessoa : Pessoa){
     //cria um novo array sem o item determinado(filter)
-    this.atletas = this.atletas.filter(elem => elem.id !== pessoa.id)
+    this.atletas = this.atletas.filter(elem => elem. !== pessoa.id)
   }
 
   alterar(pessoa : Pessoa){
@@ -39,5 +45,5 @@ export class AtletaService {
     if(posArray >=0){
       this.atletas[posArray] = pessoa
     }
-  }
+  }*/
 }

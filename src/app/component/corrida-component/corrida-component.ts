@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CorridaService } from '../../services/corrida-service';
 import { Corrida } from '../../models/corridaModel'
+import { ActivatedRoute, Route } from '@angular/router';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-corrida-component',
@@ -10,14 +12,24 @@ import { Corrida } from '../../models/corridaModel'
   styleUrl: './corrida-component.css',
 })
 
-export class CorridaComponent {
+export class CorridaComponent implements OnInit {
   //declaração dos atributos do componente
+  idCorrida: number | null = null;
   descricao = '';
-  data = '';
+  data = null;
   distancia = '';
 
 //declaração do construtor
-constructor(private corridaService: CorridaService){}
+constructor(
+  private corridaService: CorridaService,
+  private route:ActivatedRoute,
+  private router:Router,
+  private cdr:ChangeDetectorRef,
+  ){}
+
+ngOnInit(): void {
+    
+}
 
 //declaração de funções
 exibirDados(){
