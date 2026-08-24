@@ -26,7 +26,7 @@ export class ListarCorridaComponent implements OnInit {
     this.router.navigate(['/cadastroCorrida', idCorrida]);
   }
 
-  deletarCorrida(idCorrida: number) {
+  apagarCorrida(idCorrida: number) {
     //pega a função remover do service
     this.corridaService.remover(idCorrida).subscribe(() => {
       this.atualizarCorridas();

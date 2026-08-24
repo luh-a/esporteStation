@@ -15,18 +15,33 @@ export class CorridaComponent implements OnInit {
   //declaração dos atributos do componente
   idCorrida: number | null = null;
   descricao = '';
-  data = null;
+  data = '';
   distancia = '';
+  modoEdicao = false;
 
 //declaração do construtor
 constructor(
-  private corridaService: CorridaService,
+  private http: CorridaService,
   private route:ActivatedRoute,
   private router:Router,
   private cdr:ChangeDetectorRef,
   ){}
 
 ngOnInit(): void {
+  const idCorridaParam = this.route.snapshot.paramMap.get('idCorrida');
+  if (idCorridaParam) {
+    const idCorrida = Number(idCorridaParam);
+    this.modoEdicao = true;
+
+    this.http.localizarCorrida(idCorrida).subscribe((corrida) => {
+      this.idCorrida = corrida.idCorrida;
+      this.descricao = corrida.descricao;
+      this.data = this.formatarData(corrida.data);
+      this.distancia = corrida.distancia;
+      //chama o signal
+      this.cdr.detectChanges();
+    });
+  }
 
 }
 
@@ -37,9 +52,28 @@ exibirDados(){
 
 salvarCorrida(){
   const corrida = new Corrida()
+  // ?? 0 = se não houver nada começa em 0
+  corrida.idCorrida = this.idCorrida ?? 0
   corrida.descricao = this.descricao
-  corrida.data = this.data
+  corrida.data = this.data ? new Date(`${this.data}T00:00:00`) : null
   corrida.distancia = this.distancia
+
+  this.http.adicionar(corrida)
+
+  console.log(corrida)
 }
+
+private formatarData(data: Date | string | null): string {
+  if (!data) {
+    return '';
+  }
+
+  const dataObj = new Date(data);
+  const dia = String(dataObj.getDate()).padStart(2, '0');
+  const mes = String(dataObj.getMonth() + 1).padStart(2, '0'); // Meses começam do zero
+  const ano = dataObj.getFullYear();
+
+  return `${dia}/${mes}/${ano}`;
+  }
 
 }
