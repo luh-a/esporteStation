@@ -58,9 +58,30 @@ salvarCorrida(){
   corrida.data = this.data ? new Date(`${this.data}T00:00:00`) : null
   corrida.distancia = this.distancia
 
-  this.http.adicionar(corrida)
+  const operacao = this.modoEdicao
+  ? this.http.alterar(corrida.idCorrida, corrida)
+  :this.http.adicionar(corrida)
 
+  operacao.subscribe(() => {
+    if (this.modoEdicao) {
+      this.router.navigate(['/listarCorrida']);
+    } else {
+      this.limparFormulario();
+    }
   console.log(corrida)
+  });
+}
+
+cancelarEdicao() {
+  this.router.navigate(['/listarCorrida']);
+}
+
+limparFormulario() {
+    this.descricao = '';
+    this.data = '';
+    this.distancia = '';
+    this.idCorrida = null;
+    this.modoEdicao = false;
 }
 
 private formatarData(data: Date | string | null): string {
