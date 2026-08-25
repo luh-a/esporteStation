@@ -23,7 +23,7 @@ export class CorridaService {
   //verificação do conjunto([]) em vez de elemento por elemento
   listar():Observable<Corrida[]>{
     return this.http.get<any[]>(this.apiUrl).pipe(
-      map(lista => lista.map(item => ({...item, idCorrida: Number(item.id)})))
+      map(lista => lista.map(item => ({...item, idCorrida: Number(item.idCorrida)})))
       )
     };
 

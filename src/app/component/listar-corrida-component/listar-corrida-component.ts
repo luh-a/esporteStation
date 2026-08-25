@@ -16,7 +16,10 @@ export class ListarCorridaComponent implements OnInit {
   corridas = signal<Corrida[]>([]);
 
   // imports -> variáveis
-  constructor(private corridaService: CorridaService, private router: Router) {}
+  constructor(
+    private corridaService: CorridaService,
+    private router: Router,
+  ){}
 
   ngOnInit() {
     this.atualizarCorridas();

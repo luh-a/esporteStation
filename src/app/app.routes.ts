@@ -25,5 +25,9 @@ export const routes: Routes = [
   {
     path: 'listarCorrida',
     component: ListarCorridaComponent
+  },
+  {
+    path: 'cadastroCorrida/:idCorrida',
+    component: CorridaComponent
   }
 ];
