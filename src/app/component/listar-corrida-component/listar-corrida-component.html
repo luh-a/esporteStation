@@ -11,8 +11,8 @@
           <tr>
             <th> Descrição </th>
             <th> Data </th>
-            <th> Distância </th>
-            <th> Ações </th>
+            <th> Distâncias </th>
+            <th> Ação </th>
           </tr>
 
         </thead>
@@ -22,11 +22,12 @@
             <tr>
               <td> {{corrida.descricao}} </td>
               <td> {{corrida.data | date: 'dd/MM/yyyy'}} </td>
-              <td> {{corrida.distancia}} </td>
+              <td> {{corrida.distancias.join(', ')}} km </td>
 
               <td>
                 <div class="acoes">
-                  <button type="button" class="btnEditar" (click)=" editarCorrida(corrida.idCorrida)"> Editar </button>
+                  <button type="button" class="btnInscrever" (click)="inscrever(corrida.idCorrida)"> Inscrever-se </button>
+                  <button type="button" class="btnEditar" (click)="editarCorrida(corrida.idCorrida)"> Editar </button>
                   <button type="button" class="btnRemover" (click)="apagarCorrida(corrida.idCorrida)"> Apagar </button>
                 </div>
               </td>

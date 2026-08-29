@@ -1,27 +1,44 @@
 <div id="inscricoes">
-  <h2> Inscrição na corrida </h2>
+  <h2> Inscrição na Corrida </h2>
 
   @if (atletas().length === 0 || corridas().length === 0) {
     <p> Não é possível realizar a inscrição, pois não há atletas ou corridas cadastradas. </p>
   } @else {
     <form id="form-inscricao" (ngSubmit)="salvarInscricao()">
-      <label for="atleta"> Atleta: </label>
+
+      <label for="cpfBusca"> Ou buscar por CPF: </label>
+      <input type="text" id="cpfBusca" name="cpfBusca" [(ngModel)]="cpfBusca" (blur)="buscarPorCpf()" placeholder="000.000.000-00">
+
+      <label for="atleta"> Atleta Cadastrado: </label>
       <select name="atleta" id="atleta" [(ngModel)]="idAtleta" required>
-        <option [ngValue]="null" disabled> Selecione o atleta </option>
+        <option [ngValue]="null" disabled> Selecione o atleta (ou digite o CPF) </option>
         @for (atleta of atletas(); track atleta.idPessoa) {
           <option [ngValue]="atleta.idPessoa"> {{ atleta.nome }} </option>
         }
       </select>
 
-      <label for="corrida"> Corrida: </label>
+      <label for="corrida"> Corrida Escolhida: </label>
       <select name="corrida" id="corrida" [(ngModel)]="idCorrida" required>
         <option [ngValue]="null" disabled> Selecione a corrida </option>
         @for (corrida of corridas(); track corrida.idCorrida) {
-          <option [ngValue]="corrida.idCorrida"> {{ corrida.descricao }} - {{ corrida.distancia }} </option>
+          <option [ngValue]="corrida.idCorrida"> {{ corrida.descricao }} </option>
         }
       </select>
 
-      <label for="camisaTam"> Tamanho da camisa </label>
+      <!-- só mostra as distâncias depois que uma corrida foi escolhida -->
+      @if (idCorrida) {
+        <label> Distância da Prova: </label>
+        <div class="radio-group">
+          @for (dist of distanciasDaCorrida(); track dist) {
+            <label class="opcao-radio">
+              <input type="radio" name="distanciaProva" [(ngModel)]="distanciaProva" [value]="dist" required>
+              {{ dist }} km
+            </label>
+          }
+        </div>
+      }
+
+      <label for="camisaTam"> Tamanho da Camiseta (Kit): </label>
       <select name="camisaTam" id="camisaTam" [(ngModel)]="camisaTam" required>
         <option value="" disabled selected> Selecione </option>
         <option value="P"> P </option>
@@ -30,7 +47,22 @@
         <option value="GG"> GG </option>
       </select>
 
-      <button type="submit"> Realizar inscrição </button>
+      <label for="categoria"> Categoria / Faixa Etária: </label>
+      <input type="text" id="categoria" name="categoria" [(ngModel)]="categoria" placeholder="Ex: Geral Masculino / 30-39 anos">
+
+      @if (idCorrida) {
+        <div id="valor-inscricao">
+          <span> Taxa de Inscrição: </span>
+          <strong> R$ {{ calcularValor().toFixed(2).replace('.', ',') }} </strong>
+        </div>
+      }
+
+      <label id="label-termos">
+        <input type="checkbox" name="aceiteTermos" [(ngModel)]="aceiteTermos" required>
+        Li e aceito os termos do regulamento da prova e declaração de saúde.
+      </label>
+
+      <button type="submit" [disabled]="!aceiteTermos"> Finalizar e Ir para Pagamento </button>
     </form>
   }
 </div>

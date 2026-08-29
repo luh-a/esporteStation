@@ -1,14 +1,26 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #F8FAFC;
 }
 
 :root {
-  --primary-color: #1e90ff;
-  --secondary-color: #f0f0f0;
-  --text-color: #333;
-  --button-color1: #5a8cbe;
-  --button-color2: #4a6fa5;
+    --primaria: #1E3A8A;       
+    --secundaria: #DBEAFE;     
+    --texto: #1E293B;
+    --texto-suave: #64748B;
+    --borda: #CBD5E1;
+
+    --botao-acao: #2563EB;     
+    --botao-neutro: #64748B;   
+    --botao-sucesso: #16A34A;  
+    --botao-perigo: #DC2626;   
+    --botao-editar: #D97706;  
 }

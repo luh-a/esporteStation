@@ -12,7 +12,8 @@
     <input type="radio" id="sexoN" name="sexo" [(ngModel)]="sexo" class="btnSelecao" value="N" required/> Não declarar
 
     <label for="cep"> CEP: </label>
-    <input type="text" id="cep" name="cep" [(ngModel)]="cep" class="input02" placeholder="Digite seu CEP" required maxlength="9"/>
+    <!-- (blur) dispara a busca assim que o usuário sai do campo, preenchendo o resto do endereço -->
+    <input type="text" id="cep" name="cep" [(ngModel)]="cep" (blur)="buscarCep()" class="input02" placeholder="Digite seu CEP" required maxlength="9"/>
 
     <label for="rua-logradouro"> Rua/Logradouro: </label>
     <input type="text" id="rua-logradouro" name="rua-logradouro" [(ngModel)]="ruaLogradouro" class="input01" placeholder="Digite sua rua/logradouro" required maxlength="30"/>

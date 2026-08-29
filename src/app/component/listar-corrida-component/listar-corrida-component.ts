@@ -29,6 +29,11 @@ export class ListarCorridaComponent implements OnInit {
     this.router.navigate(['/cadastroCorrida', idCorrida]);
   }
 
+  //leva para a tela de inscrição já com essa corrida pré-selecionada (via query param)
+  inscrever(idCorrida: number) {
+    this.router.navigate(['/inscricao'], { queryParams: { idCorrida } });
+  }
+
   apagarCorrida(idCorrida: number) {
     //pega a função remover do service
     this.corridaService.remover(idCorrida).subscribe(() => {

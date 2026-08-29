@@ -1,0 +1,67 @@
+#listaCorrida {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--branca);
+    border: 1px solid var(--secundaria);
+    border-radius: 8px;
+}
+
+#listaCorrida h1 {
+    color: var(--primaria);
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.lista-corrida table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lista-corrida th {
+    text-align: left;
+    padding: 12px;
+    background-color: var(--secundaria);
+    color: var(--primaria);
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+.lista-corrida td {
+    padding: 12px;
+    border-bottom: 1px solid var(--borda);
+    color: var(--texto);
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acoes button {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.85em;
+    color: var(--branca);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.btnInscrever {
+    background-color: var(--botao-acao);
+}
+
+.btnEditar {
+    background-color: var(--botao-editar);
+}
+
+.btnRemover {
+    background-color: var(--botao-perigo);
+}
+
+.acoes button:hover {
+    opacity: 0.85;
+}

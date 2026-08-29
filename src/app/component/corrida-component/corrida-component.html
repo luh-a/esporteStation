@@ -7,10 +7,18 @@
     <label for="data"> Data: </label>
     <input type="date" id="data" [(ngModel)]="data" name="data" required>
 
-    <label for="distancia"> Distâncias (km): </label>
-    <input type="radio" id="5km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="5" required> 5 km
-    <input type="radio" id="10km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="10" required> 10 km
-    <input type="radio" id="25km" [(ngModel)]="distancia" name="km" class="btnSelecao" value="25" required> 25 km
+    <label> Distâncias Disponíveis (km): </label>
+    <div class="checkbox-group">
+      <label class="opcao-checkbox">
+        <input type="checkbox" id="5km" [(ngModel)]="dist5" name="dist5" class="btnSelecao"> 5 km
+      </label>
+      <label class="opcao-checkbox">
+        <input type="checkbox" id="10km" [(ngModel)]="dist10" name="dist10" class="btnSelecao"> 10 km
+      </label>
+      <label class="opcao-checkbox">
+        <input type="checkbox" id="25km" [(ngModel)]="dist25" name="dist25" class="btnSelecao"> 25 km
+      </label>
+    </div>
 
     <div id="btns">
       <button type="submit"> Cadastrar </button>

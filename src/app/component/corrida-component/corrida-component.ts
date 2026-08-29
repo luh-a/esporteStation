@@ -16,8 +16,12 @@ export class CorridaComponent implements OnInit {
   idCorrida: number | null = null;
   descricao = '';
   data = '';
-  distancia = '';
   modoEdicao = false;
+
+  //um boolean pra cada distância, permitindo marcar mais de uma (checkbox)
+  dist5 = false;
+  dist10 = false;
+  dist25 = false;
 
 //declaração do construtor
 constructor(
@@ -37,7 +41,12 @@ ngOnInit(): void {
       this.idCorrida = corrida.idCorrida;
       this.descricao = corrida.descricao;
       this.data = corrida.data ? new Date(corrida.data).toISOString().split('T')[0] : '';
-      this.distancia = corrida.distancia;
+
+      //marca os checkboxes conforme as distâncias já cadastradas nessa corrida
+      this.dist5 = corrida.distancias.includes('5');
+      this.dist10 = corrida.distancias.includes('10');
+      this.dist25 = corrida.distancias.includes('25');
+
       //chama o signal
       this.cdr.detectChanges();
     });
@@ -47,7 +56,7 @@ ngOnInit(): void {
 
 //declaração de funções
 exibirDados(){
-  console.log(this.descricao, this.data, this.distancia);
+  console.log(this.descricao, this.data, this.dist5, this.dist10, this.dist25);
 }
 
 salvarCorrida(){
@@ -56,7 +65,12 @@ salvarCorrida(){
   corrida.idCorrida = this.idCorrida ?? 0
   corrida.descricao = this.descricao
   corrida.data = this.data ? new Date(`${this.data}T00:00:00`) : null
-  corrida.distancia = this.distancia
+
+  //monta o array de distâncias a partir dos checkboxes marcados
+  corrida.distancias = [];
+  if (this.dist5) corrida.distancias.push('5');
+  if (this.dist10) corrida.distancias.push('10');
+  if (this.dist25) corrida.distancias.push('25');
 
   const operacao = this.modoEdicao
   ? this.http.alterar(corrida.idCorrida, corrida)
@@ -79,7 +93,9 @@ cancelarEdicao() {
 limparFormulario() {
     this.descricao = '';
     this.data = '';
-    this.distancia = '';
+    this.dist5 = false;
+    this.dist10 = false;
+    this.dist25 = false;
     this.idCorrida = null;
     this.modoEdicao = false;
 }
