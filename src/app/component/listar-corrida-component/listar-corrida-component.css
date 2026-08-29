@@ -30,7 +30,7 @@
 
 .lista-corrida td {
     padding: 12px;
-    border-bottom: 1px solid var(--borda);
+    border-bottom: 1px solid var(--secundaria);
     color: var(--texto);
 }
 
@@ -51,15 +51,15 @@
 }
 
 .btnInscrever {
-    background-color: var(--botao-acao);
+    background-color: var(--acao);
 }
 
 .btnEditar {
-    background-color: var(--botao-editar);
+    background-color: var(--neutro);
 }
 
 .btnRemover {
-    background-color: var(--botao-perigo);
+    background-color: var(--alerta);
 }
 
 .acoes button:hover {

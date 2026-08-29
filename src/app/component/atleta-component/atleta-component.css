@@ -29,21 +29,21 @@
     padding: 8px 12px;
     color: var(--texto);
     background-color: var(--branca);
-    border: 1px solid var(--borda);
+    border: 1px solid var(--secundaria);
     border-radius: 4px;
     outline: none;
 }
 
 #form-atleta input[type="text"]:focus {
-    border-color: var(--botao-acao);
+    border-color: var(--acao);
 }
 
 #form-atleta input::placeholder {
-    color: var(--texto-suave);
+    color: var(--neutro);
 }
 
 .btnSelecao {
-    accent-color: var(--botao-acao);
+    accent-color: var(--acao);
     margin-right: 5px;
 }
 
@@ -66,11 +66,11 @@
 }
 
 #btnAdd {
-    background-color: var(--botao-acao);
+    background-color: var(--acao);
 }
 
 #btnLimpar {
-    background-color: var(--botao-neutro);
+    background-color: var(--neutro);
 }
 
 #div-btns button:hover {

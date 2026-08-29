@@ -35,13 +35,13 @@
     padding: 8px 12px;
     color: var(--texto);
     background-color: var(--branca);
-    border: 1px solid var(--borda);
+    border: 1px solid var(--secundaria);
     border-radius: 4px;
     outline: none;
 }
 
 #form-corrida input:focus {
-    border-color: var(--botao-acao);
+    border-color: var(--acao);
 }
 
 .checkbox-group {
@@ -60,7 +60,7 @@
 }
 
 .btnSelecao {
-    accent-color: var(--botao-acao);
+    accent-color: var(--acao);
 }
 
 #btns {
@@ -82,11 +82,11 @@
 }
 
 #btns button[type="submit"] {
-    background-color: var(--botao-acao);
+    background-color: var(--acao);
 }
 
 #btns button[type="reset"] {
-    background-color: var(--botao-neutro);
+    background-color: var(--neutro);
 }
 
 #btns button:hover {

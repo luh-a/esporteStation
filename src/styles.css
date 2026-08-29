@@ -12,15 +12,12 @@ body {
 }
 
 :root {
-    --primaria: #1E3A8A;       
-    --secundaria: #DBEAFE;     
+    --primaria: #1E3A8A;
+    --secundaria: #DBEAFE;
+    --branca: #FFFFFF;
     --texto: #1E293B;
-    --texto-suave: #64748B;
-    --borda: #CBD5E1;
 
-    --botao-acao: #2563EB;     
-    --botao-neutro: #64748B;   
-    --botao-sucesso: #16A34A;  
-    --botao-perigo: #DC2626;   
-    --botao-editar: #D97706;  
+    --acao: #2563EB;
+    --neutro: #64748B;
+    --alerta: #DC2626;
 }
