@@ -1,31 +1,36 @@
 <div id="inscricoes">
   <h2> Inscrição na corrida </h2>
 
-  @@if (atletas().length === 0 || corridas().length === 0) {
+  @if (atletas().length === 0 || corridas().length === 0) {
     <p> Não é possível realizar a inscrição, pois não há atletas ou corridas cadastradas. </p>
   } @else {
     <form id="form-inscricao" (ngSubmit)="salvarInscricao()">
-     <label for="atleta"> Atleta: </label>
-     <select name="atleta" id="atleta" [(ngModel)]="idAtleta" required>
-      <option [ngValue]="null" disabled> Selecione o atleta </option>
-      @for (let atleta of atletas(); track atleta.idAtleta) {
-        <option [ngValue]="atleta.idAtleta"> {{ atleta.nome }} </option>
-      }
-    </select>
+      <label for="atleta"> Atleta: </label>
+      <select name="atleta" id="atleta" [(ngModel)]="idAtleta" required>
+        <option [ngValue]="null" disabled> Selecione o atleta </option>
+        @for (atleta of atletas(); track atleta.idAtleta) {
+          <option [ngValue]="atleta.idPessoa"> {{ atleta.nome }} </option>
+        }
+      </select>
 
-    <label for="corrida"> Corrida: </label>
-     <select name="corrida" id="corrida" [(ngModel)]="idCorrida" required>
-      <option [ngValue]="null" disabled> Selecione a corrida </option>
-      @for (let corrida of corridas(); track atleta.idCorrida) {
-        <option [ngValue]="corrida.idCorrida"> {{ corrida.descricao }} - {{ corrida.distancia }} </option>
-      }
-    </select>
+      <label for="corrida"> Corrida: </label>
+      <select name="corrida" id="corrida" [(ngModel)]="idCorrida" required>
+        <option [ngValue]="null" disabled> Selecione a corrida </option>
+        @for (corrida of corridas(); track corrida.idCorrida) {
+          <option [ngValue]="corrida.idCorrida"> {{ corrida.descricao }} - {{ corrida.distancia }} </option>
+        }
+      </select>
 
-    <label for="camisaTam"> Tamanho da camisa </label>
-    
+      <label for="camisaTam"> Tamanho da camisa </label>
+      <select name="camisaTam" id="camisaTam" [(ngModel)]="camisaTam" required>
+        <option value="" disabled selected> Selecione </option>
+        <option value="P"> P </option>
+        <option value="M"> M </option>
+        <option value="G"> G </option>
+        <option value="GG"> GG </option>
+      </select>
 
-    <button type="submit"> Realizar inscrição </button>
-
+      <button type="submit"> Realizar inscrição </button>
     </form>
   }
 </div>

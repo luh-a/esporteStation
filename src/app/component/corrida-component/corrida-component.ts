@@ -36,7 +36,7 @@ ngOnInit(): void {
     this.http.localizarCorrida(idCorrida).subscribe((corrida) => {
       this.idCorrida = corrida.idCorrida;
       this.descricao = corrida.descricao;
-      this.data = this.formatarData(corrida.data);
+      this.data = corrida.data ? new Date(corrida.data).toISOString().split('T')[0] : '';
       this.distancia = corrida.distancia;
       //chama o signal
       this.cdr.detectChanges();

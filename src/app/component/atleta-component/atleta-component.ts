@@ -31,16 +31,32 @@ export class AtletaComponent {
   }
 
   salvarAtleta(){
-    const pessoaAtleta = new Pessoa()
-    pessoaAtleta.nome = this.nome
-    pessoaAtleta.cpf = this.cpf
-    pessoaAtleta.sexo = this.sexo
-    pessoaAtleta.cep = this.cep
-    pessoaAtleta.bairro = this.bairro
-    pessoaAtleta.cidade = this.cidade
-    pessoaAtleta.estado = this.estado
-    pessoaAtleta.uf = this.uf
+  const pessoaAtleta = new Pessoa()
+  pessoaAtleta.nome = this.nome
+  pessoaAtleta.cpf = this.cpf
+  pessoaAtleta.sexo = this.sexo
+  pessoaAtleta.cep = this.cep
+  pessoaAtleta.ruaLogradouro = this.ruaLogradouro
+  pessoaAtleta.bairro = this.bairro
+  pessoaAtleta.cidade = this.cidade
+  pessoaAtleta.estado = this.estado
+  pessoaAtleta.uf = this.uf
 
-  }
+  this.atletaService.adicionar(pessoaAtleta).subscribe(() => {
+    this.limparFormulario();
+  });
+}
+
+limparFormulario(){
+  this.nome = '';
+  this.cpf = '';
+  this.sexo = '';
+  this.cep = '';
+  this.ruaLogradouro = '';
+  this.bairro = '';
+  this.cidade = '';
+  this.estado = '';
+  this.uf = '';
+}
 
 }
